@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>名前をあてよう</title>
+        <style>
+         body {
+             background-color: aliceblue;
+             color: olive;
+             text-align: center;
+         }
+         .hyouji0 { color: navy; }
+         .hyouji1 { color: doakgreen; }
+         .hyouji2 { color: brown; }
+         .hyouji3 { color: brown; }
+         .hyouji4 { color: darkred; }
+         .hyouji5 { color: purple; }
+
+         .ok { color: red; }
+         .bad { color: brack; }
+        </style>
+
+        <script>
+         // 各クラスから4人ずつのオブジェクトデータ
+         var gonen = [
+             {kumi:1, namae:'まやちゃん', toshi:10},
+             {kumi:1, namae:'すずかちゃん', toshi:11},
+             {kumi:1, namae:'けんたろうくん', toshi:10},
+             {kumi:1, namae:'しゅうくん', toshi:10},
+             {kumi:2, namae:'あすかちゃん', toshi:11},
+             {kumi:2, namae:'めぐみちゃん', toshi:10},
+             {kumi:2, namae:'ショータローくん', toshi:10},
+             {kumi:2, namae:'たかのりくん', toshi:11},
+             {kumi:3, namae:'さおりちゃん', toshi:10},
+             {kumi:3, namae:'ゆみこちゃん', toshi:11},
+             {kumi:3, namae:'しょうじくん', toshi:10},
+             {kumi:3, namae:'つかさくん', toshi:11}
+         ];
+
+         var sp;  // タイマーを管理する変数
+         var save = 0;  // startボタンを押した時の添字番号
+         var index = 0;  // 配列からデータを取り出す添字番号
+
+         // 配列から添え字番号のオブジェクト取り出し
+         // データを整えて返す
+         function getData() {
+
+             // 配列 gonen から 指定した添字番号のデータを取り出す
+             var seito = gonen[index];
+
+             // 文字列の変数に 組と名前をつないで入れる
+             var str = seito.kumi + '組 ' + seito.namae;
+
+             // 最後に歳をつけて返す
+             return  str + seito.toshi + '歳';
+         }
+
+         // 表示処理
+         function loopup() {
+
+             // 添字番号を一つすすめる
+             index = index + 1;
+             if (gonen.length <= index) {
+                 index = 0;  // 配列の最後に達したら0にもどす
+             }
+
+             // 添字番号のデータを取り出す
+             var str = getData();
+
+             // IDが hyouji の場所に表示する
+             var hyouji = document.getElementById('hyouji');
+             hyouji.innerHTML = str;
+
+             // クラス名を hyouji0 から hyouji5 にする
+             var no = Math.floor(index / 2);
+             hyouji.className = 'hyouji' + no;
+
+             // ouen の画像を入れ替える
+             var ouen = document.getElementById('ouen');
+             ouen.src = 'kano' + (no % 2) + '.png';
+         }
+
+         function start () {
+             // 結果が表示されていてば消す
+             document.getElementById('kekka').innerHTML = '';
+
+             // ボタンの表示状態を変える
+             document.getElementById('start').disabled = true;
+             document.getElementById('stop').disabled = false;
+
+             // 最初の添字番号を決める
+             index = Math.floor(Math.random() * gonen.length);
+
+             // 添字番号の値を保存する
+             save = index;
+
+             // 添字番号のデータを取り出す
+             var str = getData();
+
+             // メッセージを表示する
+             alert(str + '\r\nが表示されているときに STOP を押してね');
+
+             // 500ミリ秒間隔をあける
+             sp = setInterval(loopup, 500);
+         }
+
+         function stop() {
+             clearInterval(sp);
+
+             // ボタンの表示状態をもどす
+             document.getElementById('start').disabled = false;
+             document.getElementById('stop').disabled = true;
+
+             if (save == index) {
+                 // START ボタンを押したときに保存した値と添字番号が同じ場合
+                 document.getElementById('kekka').innerHTML = 'ぴったりだよ！';
+             } else {
+                 document.getElementById('kekka').innerHTML = 'ざんねんでした';
+             }
+             
+         }
+        </script>
+
+    </head>
+
+    <body>
+        <br><!-- 改行 -->
+        <h1>名前をあてよう</h1>
+        <br><!-- 改行 -->
+        <div id="hyouji">STARTを押すと説明を表示するよ</div>
+        <br><!-- 改行 -->
+        <div id="kekka"></div>
+        <br><!-- 改行 -->
+        <input type='button' id='start' value='START' onclick='start();'>
+        <input type='button' id='stop' value='STOP' onclick='stop();' desabled>
+    </body>
+</html>
+
+        
+            
