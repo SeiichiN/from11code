@@ -101,7 +101,7 @@
              alert(str + '\r\nが表示されているときに STOP を押してね');
 
              // 500ミリ秒間隔をあける
-             sp = setInterval(loopup, 500);
+             sp = setInterval(loopup, 600);
          }
 
          function stop() {
@@ -111,11 +111,19 @@
              document.getElementById('start').disabled = false;
              document.getElementById('stop').disabled = true;
 
+			 // 書き換える場所（タグ）を決める
+			 var kekka = document.getElementById('kekka');
+			 var ouen = document.getElementById('ouen');
+
              if (save == index) {
                  // START ボタンを押したときに保存した値と添字番号が同じ場合
-                 document.getElementById('kekka').innerHTML = 'ぴったりだよ！';
+                 kekka.innerHTML = 'ぴったりだよ！';
+				 kekka.className = 'ok';
+				 ouen.src = 'naka0.png';
              } else {
-                 document.getElementById('kekka').innerHTML = 'ざんねんでした';
+                 kekka.innerHTML = 'ざんねんでした';
+				 kekka.className = 'bad';
+				 ouen.src = 'kana1.png';
              }
              
          }
@@ -133,6 +141,8 @@
         <br><!-- 改行 -->
         <input type='button' id='start' value='START' onclick='start();'>
         <input type='button' id='stop' value='STOP' onclick='stop();' desabled>
+		<br><!-- 改行 -->
+		<img id='ouen' src='kano0.png'>
     </body>
 </html>
 
