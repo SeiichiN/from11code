@@ -2,114 +2,115 @@
 <html lang="ja">
 	<head>
 		<meta charset="utf=8">
-		<title>スロットもどき</title>
-<style>
- p {
-	 text-align: center;
- }
- input {
-	 font-size: 20px;
-	 margin: 10px 0 20px 0;
-	 padding: 0 10px;
-	 border-radius: 8px;
- }
-</style>
-	<script>
-		// scriptのプログラム全体で使える変数 sp1, sp2 sp3 を定義
-		var sp1;   // スロット画像回転１を管理する変数 sp1
-		var sp2;   // スロット画像回転１を管理する変数 sp2
-		var sp3;   // スロット画像回転１を管理する変数 sp3
+		<title>スロットぽい</title>
+        <style>
+         p {
+	         text-align: center;
+         }
+         input {
+	         font-size: 20px;
+	         margin: 10px 0 20px 0;
+	         padding: 0 10px;
+	         border-radius: 8px;
+         }
+        </style>
+	    <script>
+		 // scriptのプログラム全体で使える変数 sp1, sp2 sp3 を定義
+		 var sp1;   // スロット画像回転１を管理する変数 sp1
+		 var sp2;   // スロット画像回転１を管理する変数 sp2
+		 var sp3;   // スロット画像回転１を管理する変数 sp3
 
-		// スロット画像を回転させる関数 setImage() の処理
-		function setImage() {
-			var cg1 = 0;   // スロット１の画像を変える変数 cg1
-			var cg2 = 0;   // スロット１の画像を変える変数 cg2
-			var cg3 = 0;   // スロット１の画像を変える変数 cg3
+		 // スロット画像を回転させる関数 setImage() の処理
+		 function setImage() {
+			 var cg1 = 0;   // スロット１の画像を変える変数 cg1
+			 var cg2 = 0;   // スロット１の画像を変える変数 cg2
+			 var cg3 = 0;   // スロット１の画像を変える変数 cg3
 
-			// ５つの画像を変えられるように画像ファイル名を管理
-			var images = ["pt1.png", "pt2.png", "pt3.png", "pt4.png", "pt5.png"];
+			 // ５つの画像を変えられるように画像ファイル名を管理
+			 var images = ["pt1.png", "pt2.png", "pt3.png", "pt4.png", "pt5.png"];
 
-			// スロット画像１の表示処理
-			var loopup1 = runction() {
-				// スロット１を変更し表示
-				document.getElementById('img1').src = images[cg1++];
+			 // スロット画像１の表示処理
+			 var loopup1 = function() {
+				 // スロット１を変更し表示
+				 document.getElementById('img1').src = images[cg1++];
 
-				// 画像0、画像1、画像2、画像3、画像4 を順番に表示
-				if (cg1 > 4) {  // cg1 が 5 になったら、0に（0, 1, 2, 3, 4 を繰り返す）
-					cg1 = 0;
-				}
-			}
+				 // 画像0、画像1、画像2、画像3、画像4 を順番に表示
+				 if (cg1 > 4) {  // cg1 が 5 になったら、0に（0, 1, 2, 3, 4 を繰り返す）
+					 cg1 = 0;
+				 }
+			 }
 
-			sp1 = setInterval(loopup1, 200);   // 回転速度調整
-			                                   // （200ミリ秒表示間隔をあける
+			 sp1 = setInterval(loopup1, 200);   // 回転速度調整
+			 // （200ミリ秒表示間隔をあける
 
-			// スロット画像２の表示処理
-			var loopup2 = function () {
-				
-				// スロット画像2を変更し表示
-				document.getElementById('img2').src = images[cg2++];
+			 // スロット画像２の表示処理
+			 var loopup2 = function () {
+				 
+				 // スロット画像2を変更し表示
+				 document.getElementById('img2').src = images[cg2++];
 
-				// 画像0、画像1、画像2、画像3、画像4 を順番に表示
-				if (cg2 > 4) {  // cg2 が 5 になったら、0に（0, 1, 2, 3, 4 を繰り返す）
-					cg2 = 0;
+				 // 画像0、画像1、画像2、画像3、画像4 を順番に表示
+				 if (cg2 > 4) {  // cg2 が 5 になったら、0に（0, 1, 2, 3, 4 を繰り返す）
+					 cg2 = 0;
 
-			}
-		
-			sp2 = setInterval(loopup2, 150);   // 回転速度調整
-			                                   // （150ミリ秒表示間隔をあける
+			     }
+             }
+		     
+			 sp2 = setInterval(loopup2, 150);   // 回転速度調整
+			 // （150ミリ秒表示間隔をあける
 
-			// スロット画像3の表示処理
-			var loopup3 = function () {
-				
-				// スロット画像3を変更し表示
-				document.getElementById('img3').src = images[cg3++];
+			 // スロット画像3の表示処理
+			 var loopup3 = function () {
+				 
+				 // スロット画像3を変更し表示
+				 document.getElementById('img3').src = images[cg3++];
 
-				// 画像0、画像1、画像2、画像3、画像4 を順番に表示
-				if (cg3 > 4) {  // cg3 が 5 になったら、0に（0, 1, 2, 3, 4 を繰り返す）
-					cg3 = 0;
+				 // 画像0、画像1、画像2、画像3、画像4 を順番に表示
+				 if (cg3 > 4) {  // cg3 が 5 になったら、0に（0, 1, 2, 3, 4 を繰り返す）
+					 cg3 = 0;
 
-			}
-		
-			sp3 = setInterval(loopup3, 100);   // 回転速度調整
-			                                   // （150ミリ秒表示間隔をあける
-		}
-		// スロットのストップ処理
-		function stop_slot1() {     // スロット画像1をストップ
-			clearInterval(sp1);
-		}
+			     }
+             }		         
+			 sp3 = setInterval(loopup3, 100);   // 回転速度調整
+			 // （150ミリ秒表示間隔をあける
+         }
+		 // スロットのストップ処理
+		 function stop_slot1() {     // スロット画像1をストップ
+			 clearInterval(sp1);
+		 }
 
-		function stop_slot2() {     // スロット画像2をストップ
-			clearInterval(sp2);
-		}
+		 function stop_slot2() {     // スロット画像2をストップ
+			 clearInterval(sp2);
+		 }
 
-		function stop_slot3() {     // スロット画像3をストップ
-			clearInterval(sp3);
-		}
+		 function stop_slot3() {     // スロット画像3をストップ
+			 clearInterval(sp3);
+		 }
 
-	</script>
-</head>
+	    </script>
+    </head>
 
-<body>
-	<p>
-	<!-- star ボタンの処理 -->
-	<input type="button" value="START" onClick="setImage()">
+    <body>
+	    <p>
+	        <!-- star ボタンの処理 -->
+	        <input type="button" value="START" onClick="setImage()">
 
-	<br><br>
+	        <br><br>
 
-	<!-- 最初の画像を表示 -->
-	<img src="pt0.png" id="img1">
-	<img src="pt0.png" id="img2">
-	<img src="pt0.png" id="img3">
+	        <!-- 最初の画像を表示 -->
+	        <img src="pt0.png" id="img1">
+	        <img src="pt0.png" id="img2">
+	        <img src="pt0.png" id="img3">
 
-	<br><br>
+	        <br><br>
 
-	<!-- 各画像のストップボタン処理 -->
-	<input type="button" value="STOP1" onClick="stop_slot1()">
-	<input type="button" value="STOP2" onClick="stop_slot2()">
-	<input type="button" value="STOP3" onClick="stop_slot3()">
-	</p>
+	        <!-- 各画像のストップボタン処理 -->
+	        <input type="button" value="STOP1" onClick="stop_slot1()">
+	        <input type="button" value="STOP2" onClick="stop_slot2()">
+	        <input type="button" value="STOP3" onClick="stop_slot3()">
+	    </p>
 
 
-</body>
+    </body>
 </html>
 
