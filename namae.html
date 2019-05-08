@@ -78,7 +78,7 @@
 
              // ouen の画像を入れ替える
              var ouen = document.getElementById('ouen');
-             ouen.src = 'kano' + (no % 2) + '.jpg';
+             ouen.src = 'kano' + (no % 2) + '.png';
          }
 
          function start () {
@@ -120,11 +120,11 @@
                  // START ボタンを押したときに保存した値と添字番号が同じ場合
                  kekka.innerHTML = 'ぴったりだよ！';
 				 kekka.className = 'ok';
-				 ouen.src = 'naka0.jpg';
+				 ouen.src = 'naka0.png';
              } else {
                  kekka.innerHTML = 'ざんねんでした';
 				 kekka.className = 'bad';
-				 ouen.src = 'kano1.jpg';
+				 ouen.src = 'naka1.png';
              }
              
          }
@@ -143,7 +143,7 @@
         <input type='button' id='start' value='START' onclick='start();'>
         <input type='button' id='stop' value='STOP' onclick='stop();' desabled>
 		<br><!-- 改行 -->
-		<img id='ouen' src='kano0.jpg'>
+		<img id='ouen' src='kano0.png'>
     </body>
 </html>
 
